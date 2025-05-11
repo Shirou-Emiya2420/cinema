@@ -72,3 +72,54 @@ INSERT INTO definis (id_film, id_genre) VALUES
 (8, 1), (8, 5),
 (9, 3),
 (10, 1), (10, 3);
+
+
+-- Ajout de personnes (acteurs + réalisateurs)
+INSERT INTO personne (prenom, nom, sexe, dateDeNaissance) VALUES
+('Luc', 'Martin', 'Homme', '1970-03-15'),
+('Claire', 'Dubois', 'Femme', '1980-07-22'),
+('Jean', 'Durand', 'Homme', '1965-12-11'),
+('Sophie', 'Moreau', 'Femme', '1975-06-09'),
+('Marc', 'Petit', 'Homme', '1985-01-01'),
+('Alice', 'Garnier', 'Femme', '1990-02-14'),
+('Paul', 'Bertrand', 'Homme', '1978-04-05'),
+('Emma', 'Lemoine', 'Femme', '1982-11-27');
+
+-- Réalisateurs (liés aux personnes)
+INSERT INTO realisateur (id_personne) VALUES (1), (3), (5), (7);
+
+-- Acteurs (liés aux personnes)
+INSERT INTO acteur (id_personne) VALUES (2), (4), (6), (8);
+
+-- Films (8 au total, durées > 135 min)
+INSERT INTO film (titre, anneeSortieFr, duree, synopsis, note, afficheFilm, id_realisateur) VALUES
+('Film Test 1', '2018-12-19', 176, 'Synopsis du Film Test 1.', 3, 'https://example.com/poster1.jpg', 1),
+('Film Test 2', '2013-02-24', 136, 'Synopsis du Film Test 2.', 6, 'https://example.com/poster2.jpg', 1),
+('Film Test 3', '2011-09-04', 152, 'Synopsis du Film Test 3.', 9, 'https://example.com/poster3.jpg', 2),
+('Film Test 4', '2007-11-14', 158, 'Synopsis du Film Test 4.', 3, 'https://example.com/poster4.jpg', 2),
+('Film Test 5', '2015-12-15', 154, 'Synopsis du Film Test 5.', 7, 'https://example.com/poster5.jpg', 3),
+('Film Test 6', '2001-08-29', 138, 'Synopsis du Film Test 6.', 7, 'https://example.com/poster6.jpg', 3),
+('Film Test 7', '2006-10-19', 137, 'Synopsis du Film Test 7.', 8, 'https://example.com/poster7.jpg', 4),
+('Film Test 8', '2009-04-15', 164, 'Synopsis du Film Test 8.', 2, 'https://example.com/poster8.jpg', 4);
+
+-- Rôles
+INSERT INTO role (nom_role) VALUES ('Héros'), ('Second rôle');
+
+-- Lien acteur <-> rôle <-> film
+INSERT INTO jouer (id_film, id_acteur, id_role) VALUES
+(1, 1, 1), (1, 2, 2),
+(2, 3, 1), (2, 4, 2),
+(3, 1, 1), (3, 4, 2),
+(4, 2, 1), (4, 3, 2),
+(5, 3, 1), (5, 4, 2),
+(6, 1, 1), (6, 2, 2),
+(7, 2, 1), (7, 3, 2),
+(8, 4, 1), (8, 1, 2);
+
+-- Genres
+INSERT INTO genre (nom_genre) VALUES ('Drame'), ('Action');
+
+-- Lien film <-> genre
+INSERT INTO definis (id_film, id_genre) VALUES
+(1, 1), (2, 2), (3, 1), (4, 1),
+(5, 2), (6, 1), (7, 2), (8, 1);
