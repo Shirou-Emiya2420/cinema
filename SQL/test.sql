@@ -34,3 +34,8 @@ FROM film f
 JOIN realisateur r ON f.id_realisateur = r.id_realisateur
 JOIN personne p ON r.id_personne = p.id_personne
 GROUP BY r.id_realisateur;
+
+
+DELETE FROM acteur WHERE personne_id > 10;
+DELETE FROM personne WHERE id_personne > 10;
+
